@@ -47,7 +47,7 @@ def spravochnik(call):
                          text='*Python:* '
                               '\n\n1) *pip install googletrans==3.1.0a0* - последняя версия google-переводчика '
                               '(она не устанавливается автоматически и не описана в документации google). '
-                              '\n2) *pip install python-dotenv* - ПОРА БЫ И ЗАПОМНИТЬ ЭТОТ СРАНЫЙ МОЛъДУЛЬ, БЛЯТЬ. ',
+                              '\n2) *pip install python-dotenv* - ПОРА БЫ И ЗАПОМНИТЬ ЭТОТ СРАНЫЙ МОДУЛЬ, БЛЯТЬ. ',
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'ubuntu':
         markup = telebot.types.InlineKeyboardMarkup()
