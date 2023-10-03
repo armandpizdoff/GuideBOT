@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
-bot = telebot.Telebot(TOKEN)
+bot = telebot.TeleBot(TOKEN)
 
 
 @bot.message_handler(commands=['help'])
@@ -167,7 +167,7 @@ def spravochnik(call):
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
         bot.send_message(call.message.chat.id,
-                         text='<b>VIM: </b>'
+                         text='<b>VIM:</b> '
                               '\n\nВнутри редактора все команды начинаются с "<b>:</b>" (двоеточия)! Забудешь '
                               'этот факт - навеки останешься в ловушке Джокера. А если сгоряча закроешь сервер - '
                               'КРИТИЧЕСКАЯ ОШИБКА ПРИ ЗАКРЫТИИ БУДЕТ ПРЕСЛЕДОВАТЬ ТЕБЯ ВЕЧНОСТЬ! '
@@ -180,7 +180,7 @@ def spravochnik(call):
                               '\n<b>:w</b> - записать изменения. Если документ новый - после "w" написать будущее '
                               'название файла. '
                               '\n<b>yy</b> - Горячая клавиша. Двойное нажатие на "y" копирует выбранную строку. '
-                              '\n <b>p<b> - Горячая клавиша. Вставляет скопированную строку. ',
+                              '\n<b>p</b> - Горячая клавиша. Вставляет скопированную строку. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'pg':
         markup = telebot.types.InlineKeyboardMarkup()
