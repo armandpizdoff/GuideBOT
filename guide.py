@@ -7,7 +7,7 @@ TOKEN = os.getenv('TOKEN')
 bot = telebot.TeleBot(TOKEN)
 
 
-@bot.message_handler(commands=['help'])
+@bot.message_handler(commands=['guide'])
 def helper(message):
     markup = telebot.types.InlineKeyboardMarkup()
     button1 = telebot.types.InlineKeyboardButton(text='Python', callback_data='python')
