@@ -130,7 +130,9 @@ def spravochnik(call):
                               '\n10) <b>top</b> - сводка потребления памяти и CPU. Kind of диспетчер задач. '
                               '\n11) <b>ifconfig</b> - покажет сетевые интерфейсы на сервере. '
                               '\n12) <b>nmap example.com</b> - прога покажет открытые порты у ресурса. Требует '
-                              'предварительной установки apt. ',
+                              'предварительной установки apt. '
+                              '\n13) <b>cat /etc/hostname</b> - показать имя сервера. '
+                              '\n14) <b>sudo vim /etc/hostname</b> - открыть файл в vim для замены имени сервера. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
