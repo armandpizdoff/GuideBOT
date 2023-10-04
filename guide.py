@@ -47,7 +47,12 @@ def spravochnik(call):
                          text='*Python:* '
                               '\n\n1) *pip install googletrans==3.1.0a0* - последняя версия google-переводчика '
                               '(она не устанавливается автоматически и не описана в документации google). '
-                              '\n2) *pip install python-dotenv* - ПОРА БЫ И ЗАПОМНИТЬ ЭТОТ СРАНЫЙ МОДУЛЬ, БЛЯТЬ. ',
+                              '\n2) *pip install python-dotenv* - ПОРА БЫ И ЗАПОМНИТЬ ЭТОТ СРАНЫЙ МОДУЛЬ, БЛЯТЬ. '
+                              '\n\n*Виртуальная среда:* '
+                              '\n1) *virtualenv myprojectenv* - создать каталог для виртуальной среды. Необходимо '
+                              'находиться в папке вашего проекта. Вместо myprojectenv - можно вставить свое название. '
+                              '\n2) *source myprojectenv/bin/activate* - активировать виртуальное окружение. '
+                              '\n3) *deactivate* - выход из виртуальной среды. ',
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'ubuntu':
         markup = telebot.types.InlineKeyboardMarkup()
