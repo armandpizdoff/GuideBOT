@@ -92,7 +92,9 @@ def spravochnik(call):
                               '\n11) <b>nslookup *адрес*</b> - запрос на ДНС-сервер о резолве того или иного адреса. '
                               'Можно узнать IP ресурса. '
                               '\n12) <b>apt install имя_программы</b> - установка программы. '
-                              '\n13) <b>apt remove имя_программы</b> - удаление программы. ',
+                              '\n13) <b>apt remove имя_программы</b> - удаление программы. '
+                              '\n14) <b>sudo poweroff</b> - выключить сервер. '
+                              '\n15) <b>sudo reboot</b> - перезагрузка сервера. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu3':
         markup = telebot.types.InlineKeyboardMarkup()
