@@ -204,6 +204,7 @@ def spravochnik(call):
                               '\n<b>\q</b> - выход из консоли БД PG. '
                               '\n<b>CREATE DATABASE "myproject";</b> - Создать БД. Убрать кавычки, название '
                               'подставить своё. '
+                              '\n<b>DROP DATABASE <Имя базы данных>;</b> - удалить БД. '
                               '\n<b>CREATE USER myprojectuser WITH PASSWORD \'password\';</b> - создать пользователя '
                               'в базе. Логин и пароль вставьте желаемые. '
                               '\n<b>ALTER ROLE myprojectuser SET client_encoding TO \'utf8\';</b> - задать кодирову '
