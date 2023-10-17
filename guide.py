@@ -68,11 +68,14 @@ def spravochnik(call):
     elif call.data == 'ubuntu1':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
-        bot.send_message(call.message.chat.id, text='<b>Работа с пользователями: </b>'
-                                                    '\n1) <b>adduser user</b> - создать нового пользователя. '
-                                                    '\n2) <b>usermod -aG sudo user</b> - наделить его полномочиями. '
-                                                    '\n3) <b>su user</b> - переключение на другого пользователя '
-                                                    'без перезахода на сервер. ',
+        bot.send_message(call.message.chat.id,
+                         text='<b>Работа с пользователями: </b>'
+                              '\n1) <b>adduser user</b> - создать нового пользователя. '
+                              '\n2) <b>usermod -aG sudo user</b> - наделить его полномочиями. '
+                              '\n3) <b>su user</b> - переключение на другого пользователя без перезахода на сервер. '
+                              '\n4) <b>chown user:group <filename></b> - передать права на файл такому-то пользователю '
+                              'такой-то группы пользователей. Чтобы передать права на папку, нужно добавить ключ '
+                              'рекурсии после chown - "-R"',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu2':
         markup = telebot.types.InlineKeyboardMarkup()
