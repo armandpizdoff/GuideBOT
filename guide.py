@@ -75,7 +75,11 @@ def spravochnik(call):
                               '\n3) <b>su user</b> - переключение на другого пользователя без перезахода на сервер. '
                               '\n4) <b>chown user:group filename</b> - передать права на файл такому-то пользователю '
                               'такой-то группы пользователей. Чтобы передать права на папку, нужно добавить ключ '
-                              'рекурсии после chown - "-R"',
+                              'рекурсии после chown - "-R". '
+                              '\n5) <b>groups</b> - покажет, в каких группах состоит текущий пользователь. Команда '
+                              '<b>groups *user*</b> - возвращает список групп пользователя user. '
+                              '\n6) <b>sudo usermod -a -G group user</b> - добавить пользователя в такую-то группу '
+                              'пользователей. Заменить *group* на название группы, а *user* - на имя пользователя. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu2':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -102,7 +106,9 @@ def spravochnik(call):
                               '\n12) <b>apt install имя_программы</b> - установка программы. '
                               '\n13) <b>apt remove имя_программы</b> - удаление программы. '
                               '\n14) <b>sudo poweroff</b> - выключить сервер. '
-                              '\n15) <b>sudo reboot</b> - перезагрузка сервера. ',
+                              '\n15) <b>sudo reboot</b> - перезагрузка сервера. '
+                              '\n16) <b>sudo systemctl daemon-reload</b> - перезапуск "Демона". Нужен в том случае, '
+                              'если в файл активной службы вносились изменения. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu3':
         markup = telebot.types.InlineKeyboardMarkup()
