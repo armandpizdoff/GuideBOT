@@ -17,8 +17,9 @@ def helper(message):
     button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
     button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
     button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
+    button8 = telebot.types.InlineKeyboardButton(text='Nginx', callback_data='nginx')
     markup.row(button1, button2, button3, button7)
-    markup.row(button4, button5, button6)
+    markup.row(button4, button5, button6, button8)
     bot.send_message(message.chat.id,
                      text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                      parse_mode='HTML', reply_markup=markup)
@@ -35,8 +36,9 @@ def spravochnik(call):
         button5 = telebot.types.InlineKeyboardButton(text='Django', callback_data='django')
         button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
         button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
+        button8 = telebot.types.InlineKeyboardButton(text='Nginx', callback_data='nginx')
         markup.row(button1, button2, button3, button7)
-        markup.row(button4, button5, button6)
+        markup.row(button4, button5, button6, button8)
         bot.send_message(call.message.chat.id,
                          text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                          parse_mode='HTML', reply_markup=markup)
@@ -227,7 +229,15 @@ def spravochnik(call):
                               'права на администрирование выбранной БД выбранному пользователю. Заменить myproject '
                               'и myprojectuser на свои данные. '
                               '\n\n*Все команды внутри консоли PG должны заканчиваться знаком <b>;</b> '
-                              '(точка с запятой)',
+                              '(точка с запятой) ',
+                         parse_mode='HTML', reply_markup=markup)
+    elif call.data == 'nginx':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
+        bot.send_message(call.message.chat.id,
+                         text='<b>Nginx: </b>'
+                              '\n\n<b>sudo nginx -t</b> - проверка конфигурации Nginx на ошибки синтаксиса. '
+                              '\n<b>sudo tail -F /var/log/nginx/error.log</b> - лог ошибок nginx. ',
                          parse_mode='HTML', reply_markup=markup)
 
 
