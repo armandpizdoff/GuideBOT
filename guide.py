@@ -228,6 +228,7 @@ def spravochnik(call):
                               '\n<b>GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;</b> - передать все '
                               'права на администрирование выбранной БД выбранному пользователю. Заменить myproject '
                               'и myprojectuser на свои данные. '
+                              '\n <b>sudo netstat -pant | grep postgres</b> - проверить статус СУБД. '
                               '\n\n*Все команды внутри консоли PG должны заканчиваться знаком <b>;</b> '
                               '(точка с запятой) ',
                          parse_mode='HTML', reply_markup=markup)
