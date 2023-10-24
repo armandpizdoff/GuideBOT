@@ -261,7 +261,9 @@ def spravochnik(call):
         bot.send_message(call.message.chat.id,
                          text='<b>Nginx: </b>'
                               '\n\n<b>sudo nginx -t</b> - проверка конфигурации Nginx на ошибки синтаксиса. '
-                              '\n<b>sudo tail -F /var/log/nginx/error.log</b> - лог ошибок nginx. ',
+                              '\n<b>sudo tail -F /var/log/nginx/error.log</b> - лог ошибок nginx. '
+                              '\n<b>sudo systemctl restart nginx</b> - перезапуск службы. Может пригодится при '
+                              'изменении конфигурации серверного блока Nginx. ',
                          parse_mode='HTML', reply_markup=markup)
 
 
