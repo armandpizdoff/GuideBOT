@@ -177,14 +177,15 @@ def spravochnik(call):
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
         bot.send_message(call.message.chat.id,
                          text='*Django:* '
-                              '\n\n1) *./manage.py* - ваш друг и товарищ. Почти любые операции нужно производить, '
+                              '\n\n*./manage.py* - ваш друг и товарищ. Почти любые операции нужно производить, '
                               'находясь в одном каталоге с менеджем. '
-                              '\n2) *./manage.py createsuperuser* - создать админку на ресурсе. '
-                              '\n3) *./manage.py runserver* - запустить локальный сервер. '
-                              '\n4) *./manage.py migrate* - миграция - запись изменений самой структуры таблиц в БД. '
-                              '\n5) *./manage.py makemigrations* - подготовить миграцию к заливанию на контур. '
-                              '\n6) *./manage.py startapp app1* - создание блока приложений. Вместо app1 подставить '
-                              'название вашего будущего приложения. ',
+                              '\n*./manage.py createsuperuser* - создать админку на ресурсе. '
+                              '\n*./manage.py runserver* - запустить локальный сервер. '
+                              '\n*./manage.py migrate* - миграция - запись изменений самой структуры таблиц в БД. '
+                              '\n*./manage.py makemigrations* - подготовить миграцию к заливанию на контур. '
+                              '\n*./manage.py startapp app1* - создание блока приложений. Вместо app1 подставить '
+                              'название вашего будущего приложения. '
+                              '\n*django-admin.py* - это команды для windows. А вот для mac и linux - *django-admin*',
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'vim':
         markup = telebot.types.InlineKeyboardMarkup()
