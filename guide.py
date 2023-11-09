@@ -62,10 +62,11 @@ def spravochnik(call):
         button2 = telebot.types.InlineKeyboardButton(text='Команды и навигация', callback_data='ubuntu2')
         button3 = telebot.types.InlineKeyboardButton(text='Горячие клавиши', callback_data='ubuntu3')
         button4 = telebot.types.InlineKeyboardButton(text='Полезные примечания', callback_data='ubuntu4')
-        button5 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='guide')
+        button5 = telebot.types.InlineKeyboardButton(text='Сетевая безопасность', callback_data='ubuntu5')
+        button6 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='guide')
         markup.row(button1, button2)
         markup.row(button3, button4)
-        markup.row(button5)
+        markup.row(button5, button6)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
     elif call.data == 'ubuntu1':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -127,24 +128,41 @@ def spravochnik(call):
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
         bot.send_message(call.message.chat.id,
                          text='<b>Полезные примечания: </b>'
-                              '\n1) Если папка содержит защищённый от перезаписи контент или какие-то команды выдают '
+                              '\nЕсли папка содержит защищённый от перезаписи контент или какие-то команды выдают '
                               'ошибку доступа - добавьте в начало команды sudo - всегда помогает ;) '
-                              '\n2) <b>..</b> - каталог на уровень выше. '
-                              '\n3) <b>.</b> - текущий каталог. '
-                              '\n4) <b>~</b> - домашний каталог. '
-                              '\n5) <b>history</b> - выведет полную историю вводов команд от пользователя. '
-                              '\n6) <b>uname</b> - показать ОС. <b>uname -a</b> - точная информация про ОС, версия '
+                              '\n<b>..</b> - каталог на уровень выше. '
+                              '\n<b>.</b> - текущий каталог. '
+                              '\n<b>~</b> - домашний каталог. '
+                              '\n<b>history</b> - выведет полную историю вводов команд от пользователя. '
+                              '\n<b>uname</b> - показать ОС. <b>uname -a</b> - точная информация про ОС, версия '
                               'ядра и т.п. '
-                              '\n7) <b>cat /proc/cpuinfo</b> - показать информацию о процессоре. '
-                              '\n8) <b>cat /proc/meminfo</b> - показать информацию о RAM. '
-                              '\n9) <b>free -h</b> - краткая сводка по RAM. '
-                              '\n10) <b>top</b> - сводка потребления памяти и CPU. Kind of диспетчер задач. '
-                              '\n11) <b>ifconfig</b> - покажет сетевые интерфейсы на сервере. '
-                              '\n12) <b>nmap example.com</b> - прога покажет открытые порты у ресурса. Требует '
-                              'предварительной установки apt. '
-                              '\n13) <b>cat /etc/hostname</b> - показать имя сервера. '
-                              '\n14) <b>sudo vim /etc/hostname</b> - открыть файл в vim для замены имени сервера. ',
+                              '\n<b>cat /proc/cpuinfo</b> - показать информацию о процессоре. '
+                              '\n<b>cat /proc/meminfo</b> - показать информацию о RAM. '
+                              '\n<b>free -h</b> - краткая сводка по RAM. '
+                              '\n<b>top</b> - сводка потребления памяти и CPU. Kind of диспетчер задач. '
+                              '\n<b>cat /etc/hostname</b> - показать имя сервера. '
+                              '\n<b>sudo vim /etc/hostname</b> - открыть файл в vim для замены имени сервера. ',
                          parse_mode='HTML', reply_markup=markup)
+    elif call.data == 'ubuntu5':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
+        bot.send_message(call.message.chat.id,
+                         text='<b>Сетевая безопасность: </b> '
+                              '\n<b>ifconfig</b> - покажет сетевые интерфейсы на сервере. '
+                              '\n<b>nmap example.com</b> - прога покажет открытые порты у ресурса. Требует '
+                              'предварительной установки apt. '
+                              '\n<b>sudo ufw enable</b> - включить МСЭ/межсетевой экран/брандмауэр. '
+                              '\n<b>sudo ufw allow SSH</b> - добавить приложение в список МСЭ. '
+                              '\n<b>sudo ufw app list</b> - список приложений, зарегистрированных в МСЭ. '
+                              '\n<b>sudo ufw allow 80</b> - разрешить подключения по указанному порту. '
+                              '\n<b>sudo ufw status numbered</b> - показать сетевые правила сервера (с нумерацией). '
+                              '\n<b>sudo ufw status</b> - показать сетевые правила сервера (без нумерации). '
+                              '\n<b>sudo ufw delete 3</b> - удалить правило под указанным номером. '
+                              '\n<b>sudo ufw delete allow 443/tcp</b> - так же удаляет правило, без указания номера. '
+                              '\n<b>sudo ufw disable</b> - выключить МСЭ/межсетевой экран/брандмауэр. ',
+                         parse_mode='HTML', reply_markup=markup)
+
+
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
@@ -177,14 +195,16 @@ def spravochnik(call):
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
         bot.send_message(call.message.chat.id,
                          text='*Django:* '
-                              '\n\n1) *./manage.py* - ваш друг и товарищ. Почти любые операции нужно производить, '
+                              '\n\n*./manage.py* - ваш друг и товарищ. Почти любые операции нужно производить, '
                               'находясь в одном каталоге с менеджем. '
-                              '\n2) *./manage.py createsuperuser* - создать админку на ресурсе. '
-                              '\n3) *./manage.py runserver* - запустить локальный сервер. '
-                              '\n4) *./manage.py migrate* - миграция - запись изменений самой структуры таблиц в БД. '
-                              '\n5) *./manage.py makemigrations* - подготовить миграцию к заливанию на контур. '
-                              '\n6) *./manage.py startapp app1* - создание блока приложений. Вместо app1 подставить '
-                              'название вашего будущего приложения. ',
+                              '\n*./manage.py createsuperuser* - создать админку на ресурсе. '
+                              '\n*./manage.py runserver* - запустить локальный сервер. '
+                              '\n*./manage.py migrate* - миграция - запись изменений самой структуры таблиц в БД. '
+                              '\n*./manage.py makemigrations* - подготовить миграцию к заливанию на контур. '
+                              '\n*./manage.py startapp app1* - создание блока приложений. Вместо app1 подставить '
+                              'название вашего будущего приложения. '
+                              '\n*django-admin.py* - это манипулятор для windows. А вот для mac и linux - '
+                              '*django-admin*',
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'vim':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -212,6 +232,7 @@ def spravochnik(call):
                          text='<b>PostgreSQL: </b>'
                               '\n\n<b>sudo -u postgres psql</b> - вход в интерактивный интерфейс PG под '
                               'пользователем "Postgres". Он создался вместе с установкой БД. Так принято, так надо. '
+                              '\n<b>\c db_name usr_name</b> - подключиться к такой-то базе под таким-то пользователем. '
                               '\n<b>\q</b> - выход из консоли БД PG. '
                               '\n<b>CREATE DATABASE "myproject";</b> - Создать БД. Убрать кавычки, название '
                               'подставить своё. '
@@ -229,6 +250,12 @@ def spravochnik(call):
                               'права на администрирование выбранной БД выбранному пользователю. Заменить myproject '
                               'и myprojectuser на свои данные. '
                               '\n <b>sudo netstat -pant | grep postgres</b> - проверить статус СУБД. '
+                              '\n<b>sudo netstat -pant | grep postgres</b> - проверить статус СУБД. '
+                              '\n<b>select * from pg_hba_file_rules;</b> - просмотреть правила настроек подключения '
+                              '(в терминале). '
+                              '\n<b>\du</b> - просмотреть список пользователей БД. '
+                              '\n<b>Postgres exporter</b> — сбор метрик работы сервера PostgreSQL. Порт для доступа по '
+                              'умолчанию — <b>9187</b>;'
                               '\n\n*Все команды внутри консоли PG должны заканчиваться знаком <b>;</b> '
                               '(точка с запятой) ',
                          parse_mode='HTML', reply_markup=markup)
@@ -238,7 +265,9 @@ def spravochnik(call):
         bot.send_message(call.message.chat.id,
                          text='<b>Nginx: </b>'
                               '\n\n<b>sudo nginx -t</b> - проверка конфигурации Nginx на ошибки синтаксиса. '
-                              '\n<b>sudo tail -F /var/log/nginx/error.log</b> - лог ошибок nginx. ',
+                              '\n<b>sudo tail -F /var/log/nginx/error.log</b> - лог ошибок nginx. '
+                              '\n<b>sudo systemctl restart nginx</b> - перезапуск службы. Может пригодится при '
+                              'изменении конфигурации серверного блока Nginx. ',
                          parse_mode='HTML', reply_markup=markup)
 
 
