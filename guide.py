@@ -275,7 +275,7 @@ def spravochnik(call):
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
         bot.send_message(call.message.chat.id,
                          text='<b>HTML: </b>'
-                              '\n\n*<br>* - перенос строки. '
+                              '\n\n*<br>* - перенос строк в цикле. '
                               '\n ',
                          parse_mode='markdown', reply_markup=markup)
 
