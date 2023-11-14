@@ -18,8 +18,10 @@ def helper(message):
     button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
     button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
     button8 = telebot.types.InlineKeyboardButton(text='Nginx', callback_data='nginx')
+    button9 = telebot.types.InlineKeyboardButton(text='HTML', callback_data='html')
     markup.row(button1, button2, button3, button7)
     markup.row(button4, button5, button6, button8)
+    markup.row(button9)
     bot.send_message(message.chat.id,
                      text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                      parse_mode='HTML', reply_markup=markup)
@@ -37,8 +39,10 @@ def spravochnik(call):
         button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
         button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
         button8 = telebot.types.InlineKeyboardButton(text='Nginx', callback_data='nginx')
+        button9 = telebot.types.InlineKeyboardButton(text='HTML', callback_data='html')
         markup.row(button1, button2, button3, button7)
         markup.row(button4, button5, button6, button8)
+        markup.row(button9)
         bot.send_message(call.message.chat.id,
                          text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
                          parse_mode='HTML', reply_markup=markup)
@@ -161,8 +165,6 @@ def spravochnik(call):
                               '\n<b>sudo ufw delete allow 443/tcp</b> - так же удаляет правило, без указания номера. '
                               '\n<b>sudo ufw disable</b> - выключить МСЭ/межсетевой экран/брандмауэр. ',
                          parse_mode='HTML', reply_markup=markup)
-
-
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
@@ -268,6 +270,14 @@ def spravochnik(call):
                               '\n<b>sudo systemctl restart nginx</b> - перезапуск службы. Может пригодится при '
                               'изменении конфигурации серверного блока Nginx. ',
                          parse_mode='HTML', reply_markup=markup)
+    elif call.data == 'html':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
+        bot.send_message(call.message.chat.id,
+                         text='<b>HTML: </b>'
+                              '\n\n*<br>* - перенос строки. '
+                              '\n ',
+                         parse_mode='markdown', reply_markup=markup)
 
 
 bot.polling(none_stop=True, interval=0)
