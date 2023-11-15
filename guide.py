@@ -276,7 +276,7 @@ def spravochnik(call):
         bot.send_message(call.message.chat.id,
                          text='<b>HTML: </b>'
                               '\n\n*<br>* - перенос строк в цикле. '
-                              '\n ',
+                              '\n *<li>* - элемент списка. Входит в <ol>, <ul> и <menu>
                          parse_mode='markdown', reply_markup=markup)
 
 
