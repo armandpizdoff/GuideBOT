@@ -144,6 +144,7 @@ def spravochnik(call):
                               '\n<b>cat /proc/meminfo</b> - показать информацию о RAM. '
                               '\n<b>free -h</b> - краткая сводка по RAM. '
                               '\n<b>top</b> - сводка потребления памяти и CPU. Kind of диспетчер задач. '
+                              '\n<b>ps axu</b> - открытые приложения на сервере. '
                               '\n<b>cat /etc/hostname</b> - показать имя сервера. '
                               '\n<b>sudo vim /etc/hostname</b> - открыть файл в vim для замены имени сервера. ',
                          parse_mode='HTML', reply_markup=markup)
