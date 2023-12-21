@@ -258,7 +258,8 @@ def spravochnik(call):
                               '(в терминале). '
                               '\n<b>\du</b> - просмотреть список пользователей БД. '
                               '\n<b>Postgres exporter</b> — сбор метрик работы сервера PostgreSQL. Порт для доступа по '
-                              'умолчанию — <b>9187</b>;'
+                              'умолчанию — <b>9187</b>; '
+                              '\n<b>sudo service postgresql restart</b> - перезапуск БД. '
                               '\n\n*Все команды внутри консоли PG должны заканчиваться знаком <b>;</b> '
                               '(точка с запятой) ',
                          parse_mode='HTML', reply_markup=markup)
