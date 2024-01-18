@@ -8,6 +8,11 @@ bot = telebot.TeleBot(TOKEN)
 
 
 @bot.message_handler(commands=['guide'])
+def start(message):
+    bot.send_message(message.chat.id, text='Нажмите /guide!')
+
+
+@bot.message_handler(commands=['guide'])
 def helper(message):
     markup = telebot.types.InlineKeyboardMarkup()
     button1 = telebot.types.InlineKeyboardButton(text='Python', callback_data='python')
@@ -280,7 +285,7 @@ def spravochnik(call):
                          text='<b>HTML: </b>'
                               '\n\n*<br>* - перенос строк в цикле. '
                               '\n*<li>* - элемент списка. Входит в <ol>, <ul> и <menu>. ',
-                         parse_mode='markdown', reply_markup=markup)
+                         parse_mode='HTML', reply_markup=markup)
 
 
 bot.polling(none_stop=True, interval=0)
