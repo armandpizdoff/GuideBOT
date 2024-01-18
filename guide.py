@@ -23,7 +23,7 @@ def helper(message):
     markup.row(button4, button5, button6, button8)
     markup.row(button9)
     bot.send_message(message.chat.id,
-                     text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
+                     text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Буйвол+</b>". Чем вам помочь?',
                      parse_mode='HTML', reply_markup=markup)
 
 
