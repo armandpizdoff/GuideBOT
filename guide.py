@@ -7,11 +7,6 @@ TOKEN = os.getenv('TOKEN')
 bot = telebot.TeleBot(TOKEN)
 
 
-@bot.message_handler(commands=['start'])
-def start(message):
-    bot.send_message(message.chat.id, text='Нажмите /guide!')
-
-
 @bot.message_handler(commands=['guide'])
 def helper(message):
     markup = telebot.types.InlineKeyboardMarkup()
