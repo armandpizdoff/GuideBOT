@@ -147,8 +147,9 @@ def spravochnik(call):
                               '\n<b>top</b> - сводка потребления памяти и CPU. Kind of диспетчер задач. '
                               '\n<b>ps axu</b> - открытые приложения на сервере. '
                               '\n<b>cat /etc/hostname</b> - показать имя сервера. '
-                              '\n<b>sudo vim /etc/hostname</b> - открыть файл в vim для замены имени сервера. ',
-                         parse_mode='HTML', reply_markup=markup)
+                              '\n<b>sudo vim /etc/hostname</b> - открыть файл в vim для замены имени сервера. '
+                              '\n<b>lsb_release -a</b> - выводит информацию о дистрибутиве Ubuntu, включая его '
+                              'версию. ', parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu5':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
