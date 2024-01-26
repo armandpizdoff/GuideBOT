@@ -18,10 +18,12 @@ def helper(message):
     button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
     button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
     button8 = telebot.types.InlineKeyboardButton(text='Nginx', callback_data='nginx')
+    button9 = telebot.types.InlineKeyboardButton(text='HTML', callback_data='html')
     markup.row(button1, button2, button3, button7)
     markup.row(button4, button5, button6, button8)
+    markup.row(button9)
     bot.send_message(message.chat.id,
-                     text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
+                     text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Буйвол+</b>". Чем вам помочь?',
                      parse_mode='HTML', reply_markup=markup)
 
 
@@ -37,10 +39,12 @@ def spravochnik(call):
         button6 = telebot.types.InlineKeyboardButton(text='VIM', callback_data='vim')
         button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
         button8 = telebot.types.InlineKeyboardButton(text='Nginx', callback_data='nginx')
+        button9 = telebot.types.InlineKeyboardButton(text='HTML', callback_data='html')
         markup.row(button1, button2, button3, button7)
         markup.row(button4, button5, button6, button8)
+        markup.row(button9)
         bot.send_message(call.message.chat.id,
-                         text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Старый+</b>". Чем вам помочь?',
+                         text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Буйвол+</b>". Чем вам помочь?',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'python':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -89,28 +93,30 @@ def spravochnik(call):
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
         bot.send_message(call.message.chat.id,
                          text='<b>Команды навигации и манипуляторы: </b>'
-                              '\n1) <b>rm -R /home/user/directory/</b> - рекурсивное удаление указанного каталога '
+                              '\n<b>rm -R /home/user/directory/</b> - рекурсивное удаление указанного каталога '
                               'с содержимым. '
-                              '\n2) <b>rmdir /directory/</b> - удаление пустого каталога. '
-                              '\n3) <b>df -h</b> - отображение дискового пространства с критерием использования '
+                              '\n<b>rmdir /directory/</b> - удаление пустого каталога. '
+                              '\n<b>df -h</b> - отображение дискового пространства с критерием использования '
                               'памяти. '
-                              '\n4) <b>mv * ../</b> - перемещает файлы в текущем каталоге на уровень выше. '
-                              '\n5) <b>mv *.* ..</b> - перемещает ВСЕ ФАЙЛЫ в текущем каталоге на уровень выше '
+                              '\n<b>mv * ../</b> - перемещает файлы в текущем каталоге на уровень выше. '
+                              '\n<b>mv *.* ..</b> - перемещает ВСЕ ФАЙЛЫ в текущем каталоге на уровень выше '
                               '(в т.ч. и скрытые). '
-                              '\n6) <b>cp user/file.txt /home/user/directory</b> - '
+                              '\n<b>cp user/file.txt /home/user/directory</b> - '
                               'скопировать файл. схема: cp + что копируем + куда скопировать. '
-                              '\n7) <b>cp user/file.txt ./file_super</b> - . - копирует в текущую директорию. После '
+                              '\n<b>cp user/file.txt ./file_super</b> - . - копирует в текущую директорию. После '
                               'слэша - новое название для копии (если оно требуется). '
-                              '\n8) <b>cp -r /home/user/directory/</b> - рекурсивное копирование непустого каталога. '
-                              '\n9) <b>cat file.txt</b> - открыть текстовый файл. '
-                              '\n10) <b>tail -4 file.txt</b> - показать указанное число последних записей в файле. '
-                              '\n11) <b>nslookup *адрес*</b> - запрос на ДНС-сервер о резолве того или иного адреса. '
+                              '\n<b>cp -r /home/user/directory/</b> - рекурсивное копирование непустого каталога. '
+                              '\n<b>cat file.txt</b> - открыть текстовый файл. '
+                              '\n<b>tail -4 file.txt</b> - показать указанное число последних записей в файле. '
+                              '\n<b>nslookup *адрес*</b> - запрос на ДНС-сервер о резолве того или иного адреса. '
                               'Можно узнать IP ресурса. '
-                              '\n12) <b>apt install имя_программы</b> - установка программы. '
-                              '\n13) <b>apt remove имя_программы</b> - удаление программы. '
-                              '\n14) <b>sudo poweroff</b> - выключить сервер. '
-                              '\n15) <b>sudo reboot</b> - перезагрузка сервера. '
-                              '\n16) <b>sudo systemctl daemon-reload</b> - перезапуск "Демона". Нужен в том случае, '
+                              '\n<b>apt-get update</b> - обновляет информацию о пакетах в репозиториях Ubuntu. '
+                              '\n<b>apt update</b> - установить новые пакеты. '
+                              '\n<b>apt install имя_программы</b> - установка программы. '
+                              '\n<b>apt remove имя_программы</b> - удаление программы. '
+                              '\n<b>sudo poweroff</b> - выключить сервер. '
+                              '\n<b>sudo reboot</b> - перезагрузка сервера. '
+                              '\n<b>sudo systemctl daemon-reload</b> - перезапуск "Демона". Нужен в том случае, '
                               'если в файл активной службы вносились изменения. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu3':
@@ -118,10 +124,10 @@ def spravochnik(call):
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
         bot.send_message(call.message.chat.id,
                          text='<b>Terminal HotKeys: </b>'
-                              '\n1) <b>ctrl + L</b> - очистить экран терминала. '
-                              '\n2) <b>ctrl + C</b> - прервать операцию. '
-                              '\n3) <b>ctrl + ]</b> - выход из консоли телнета. '
-                              '\n4) <b>ctrl + D</b> - exit. Возврат в консоль Linux. ',
+                              '\n<b>ctrl + L</b> - очистить экран терминала. '
+                              '\n<b>ctrl + C</b> - прервать операцию. '
+                              '\n<b>ctrl + ]</b> - выход из консоли телнета. '
+                              '\n<b>ctrl + D</b> - exit. Возврат в консоль Linux. ',
                          parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu4':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -133,6 +139,7 @@ def spravochnik(call):
                               '\n<b>..</b> - каталог на уровень выше. '
                               '\n<b>.</b> - текущий каталог. '
                               '\n<b>~</b> - домашний каталог. '
+                              '\n<b>pip3 install --upgrade setuptools pip</b> - обновить установщик пакетов. '
                               '\n<b>history</b> - выведет полную историю вводов команд от пользователя. '
                               '\n<b>uname</b> - показать ОС. <b>uname -a</b> - точная информация про ОС, версия '
                               'ядра и т.п. '
@@ -140,9 +147,11 @@ def spravochnik(call):
                               '\n<b>cat /proc/meminfo</b> - показать информацию о RAM. '
                               '\n<b>free -h</b> - краткая сводка по RAM. '
                               '\n<b>top</b> - сводка потребления памяти и CPU. Kind of диспетчер задач. '
+                              '\n<b>ps axu</b> - открытые приложения на сервере. '
                               '\n<b>cat /etc/hostname</b> - показать имя сервера. '
-                              '\n<b>sudo vim /etc/hostname</b> - открыть файл в vim для замены имени сервера. ',
-                         parse_mode='HTML', reply_markup=markup)
+                              '\n<b>sudo vim /etc/hostname</b> - открыть файл в vim для замены имени сервера. '
+                              '\n<b>lsb_release -a</b> - выводит информацию о дистрибутиве Ubuntu, включая его '
+                              'версию. ', parse_mode='HTML', reply_markup=markup)
     elif call.data == 'ubuntu5':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='ubuntu'))
@@ -161,13 +170,14 @@ def spravochnik(call):
                               '\n<b>sudo ufw delete allow 443/tcp</b> - так же удаляет правило, без указания номера. '
                               '\n<b>sudo ufw disable</b> - выключить МСЭ/межсетевой экран/брандмауэр. ',
                          parse_mode='HTML', reply_markup=markup)
-
-
     elif call.data == 'git':
         markup = telebot.types.InlineKeyboardMarkup()
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
         bot.send_message(call.message.chat.id,
                          text='*GIT:* '
+                              '\n\nСоздание репозитория git-> сервер: '
+                              '\n*git clone git@github.com:your-nickname/your-project.git* - подставить свою УЗ и '
+                              'название репозитория.'
                               '\n\nСинхронизация *git* с ПК и удалённым репозиторием: '
                               '\n1) *git fetch* --> *git merge* - фетч проверяет изменения в репозитории на GITHUB '
                               'и закачивает их на вашу банку/удалённый сервер. Мердж - применяет/заменяет текущие '
@@ -175,11 +185,12 @@ def spravochnik(call):
                               'данных этот способ безопаснее, чем способ ниже. '
                               '\n2) *git pull* - то же самое, что первый способ, но в одно действие. Так сказать, '
                               'форсированное обновление локального репозитория. '
-                              '\n3) *git push* - обратное действие к п.1 и п2. - он нужен, если вы произвели '
-                              'обновление на вашем ПК/удалённом сервере и хотите залить изменения в репу на GITHUB. '
-                              '\n\nСоздание репозитория git-> сервер: '
-                              '\n*git clone git@github.com:your-nickname/your-project.git* - подставить свою УЗ и '
-                              'название репозитория.',
+                              '\n3) *git status* - проверить статус репозитория. Здесь видно, если какая-то '
+                              'директория/файлы не входят в репу (список "Untracked files"). '
+                              '\n4) *git add название_директории* - добавить новую директорию в индекс вашего Git. '
+                              '\n5) *git commit -m "описание"* - подготовить изменения для заливки в репозиторий. '
+                              '\n6) *git push* - обратное действие к п.1 и п2. - он нужен, если вы произвели '
+                              'обновление на вашем ПК/удалённом сервере и хотите залить изменения в репу на GITHUB. ',
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'telegram':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -253,9 +264,14 @@ def spravochnik(call):
                               '\n<b>sudo netstat -pant | grep postgres</b> - проверить статус СУБД. '
                               '\n<b>select * from pg_hba_file_rules;</b> - просмотреть правила настроек подключения '
                               '(в терминале). '
-                              '\n<b>\du</b> - просмотреть список пользователей БД. '
+                              '\n<b>select * from pg_catalog.pg_user;</b> - просмотреть список пользователей БД. '
+                              '<i>Позволяет выполнять запросы к базе данных из любого клиента или среды '
+                              'программирования, поддерживающих PostgreSQL.</i>'
+                              '\n<b>\du</b> - Просмотреть список пользователей БД - тоже самое, только в виде '
+                              'bash-запроса. <i>Его можно использовать только в оболочке psql.</i> '
                               '\n<b>Postgres exporter</b> — сбор метрик работы сервера PostgreSQL. Порт для доступа по '
-                              'умолчанию — <b>9187</b>;'
+                              'умолчанию — <b>9187</b>; '
+                              '\n<b>sudo service postgresql restart</b> - перезапуск БД. '
                               '\n\n*Все команды внутри консоли PG должны заканчиваться знаком <b>;</b> '
                               '(точка с запятой) ',
                          parse_mode='HTML', reply_markup=markup)
@@ -269,6 +285,14 @@ def spravochnik(call):
                               '\n<b>sudo systemctl restart nginx</b> - перезапуск службы. Может пригодится при '
                               'изменении конфигурации серверного блока Nginx. ',
                          parse_mode='HTML', reply_markup=markup)
+    elif call.data == 'html':
+        markup = telebot.types.InlineKeyboardMarkup()
+        markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
+        bot.send_message(call.message.chat.id,
+                         text='<b>HTML: </b>'
+                              '\n\n*<br>* - перенос строк в цикле. '
+                              '\n*<li>* - элемент списка. Входит в <ol>, <ul> и <menu>. ',
+                         parse_mode='markdown', reply_markup=markup)
 
 
 bot.polling(none_stop=True, interval=0)
