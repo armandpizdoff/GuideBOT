@@ -250,7 +250,7 @@ def spravochnik(call):
                               '\n<b>DROP DATABASE *Имя базы данных*;</b> - удалить БД. '
                               '\n<b>CREATE USER myprojectuser WITH PASSWORD \'password\';</b> - создать пользователя '
                               'в базе. Логин и пароль вставьте желаемые. '
-                              '\n<b>ALTER ROLE myprojectuser SET client_encoding TO \'utf8\';</b> - задать кодирову '
+                              '\n<b>ALTER ROLE myprojectuser SET client_encoding TO \'utf8\';</b> - задать кодировку '
                               'по умолчанию в БД - UTF-8. '
                               '\n<b>ALTER ROLE myprojectuser SET default_transaction_isolation TO \'read committed\''
                               ';</b> - ограничивает чтение со стороны неподтверждённых транзакций. Я хз что это '
