@@ -54,6 +54,7 @@ def spravochnik(call):
                               '\n\n1) *pip install googletrans==3.1.0a0* - последняя версия google-переводчика '
                               '(она не устанавливается автоматически и не описана в документации google). '
                               '\n2) *pip install python-dotenv* - ПОРА БЫ И ЗАПОМНИТЬ ЭТОТ СРАНЫЙ МОДУЛЬ, БЛЯТЬ. '
+                              '\n3) *python.exe -m pip install --upgrade pip* - обновить python '
                               '\n\n*Виртуальная среда:* '
                               '\n1) *virtualenv myprojectenv* - создать каталог для виртуальной среды. Необходимо '
                               'находиться в папке вашего проекта. Вместо myprojectenv - можно вставить свое название. '
