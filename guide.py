@@ -40,9 +40,10 @@ def spravochnik(call):
         button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
         button8 = telebot.types.InlineKeyboardButton(text='Nginx', callback_data='nginx')
         button9 = telebot.types.InlineKeyboardButton(text='HTML', callback_data='html')
+        button10 = telebot.types.InlineKeyboardButton(text='Projects', callback_data='projects')
         markup.row(button1, button2, button3, button7)
         markup.row(button4, button5, button6, button8)
-        markup.row(button9)
+        markup.row(button9, button10)
         bot.send_message(call.message.chat.id,
                          text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Буйвол+</b>". Чем вам помочь?',
                          parse_mode='HTML', reply_markup=markup)
@@ -51,10 +52,11 @@ def spravochnik(call):
         markup.add(telebot.types.InlineKeyboardButton(text="Назад", callback_data='guide'))
         bot.send_message(call.message.chat.id,
                          text='*Python:* '
-                              '\n\n1) *pip install googletrans==3.1.0a0* - последняя версия google-переводчика '
+                              '\n\n1) *python.exe -m pip install --upgrade pip* - обновить python '
+                              '\n2) *pip install googletrans==3.1.0a0* - последняя версия google-переводчика '
                               '(она не устанавливается автоматически и не описана в документации google). '
-                              '\n2) *pip install python-dotenv* - ПОРА БЫ И ЗАПОМНИТЬ ЭТОТ СРАНЫЙ МОДУЛЬ, БЛЯТЬ. '
-                              '\n3) *python.exe -m pip install --upgrade pip* - обновить python '
+                              '\n3) *pip install python-dotenv* - ПОРА БЫ И ЗАПОМНИТЬ ЭТОТ СРАНЫЙ МОДУЛЬ, БЛЯТЬ. '
+                              '\n4) *pip install pyTelegramBotAPI* - установить библиотеку для Telegram '
                               '\n\n*Виртуальная среда:* '
                               '\n1) *virtualenv myprojectenv* - создать каталог для виртуальной среды. Необходимо '
                               'находиться в папке вашего проекта. Вместо myprojectenv - можно вставить свое название. '
@@ -203,7 +205,8 @@ def spravochnik(call):
                          text='*Telegram:* '
                               '\n\n1) *username_to_id_bot* - подставь собаку перед названием. Этот бот позволяет '
                               'узнать свой ID или ID любого чата. Для этого его НЕ ОБЯЗАТЕЛЬНО добавлять в чат. '
-                              '\n*PS* Я давно научил нашего Старого тоже это делать, но пусть будет. ',
+                              '\n*PS* Я давно научил нашего Старого тоже это делать, но пусть будет. '
+                              '\n2)*pip install pyTelegramBotAPI* - установить py-библиотеку для Telegram ',
                          parse_mode='markdown', reply_markup=markup)
     elif call.data == 'django':
         markup = telebot.types.InlineKeyboardMarkup()
@@ -296,6 +299,29 @@ def spravochnik(call):
                          text='<b>HTML: </b>'
                               '\n\n*<br>* - перенос строк в цикле. '
                               '\n*<li>* - элемент списка. Входит в <ol>, <ul> и <menu>. ',
+                         parse_mode='markdown', reply_markup=markup)
+    elif call.data == 'projects':
+        markup = telebot.types.InlineKeyboardMarkup()
+        button1 = telebot.types.InlineKeyboardButton(text='Алгоритм создания проектов', callback_data='algorithm')
+        button2 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='guide')
+        markup.row(button1)
+        markup.row(button2)
+        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='Здесь будут рекомендации по ведению ваших проектов',
+                         parse_mode='markdown', reply_markup=markup)
+    elif call.data == 'algorithm':
+        markup = telebot.types.InlineKeyboardMarkup()
+        button1 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='projects')
+        markup.row(button1)
+        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
+        bot.send_message(call.message.chat.id, text='Для начала стоит помнить, что проще всего создавать репозиторий '
+                                                    'в GIT, а же потом загружать его на ПК/ВМ (см. раздел GIT). '
+                                                    'Далее следует настроить файл .gitignore (раскомментировать или '
+                                                    'добавить в конец *.idea/*.)'
+                                                    '\nНа ПК и ВМ должны быть развёрнуты виртуальные окружения для '
+                                                    'проектов: на ВМ будет боевой режим, а на ПК оно требуется для '
+                                                    'тестов. Они должны быть идентичны, но добавлять модули и '
+                                                    'библиотеки требуется и туда, и туда.',
                          parse_mode='markdown', reply_markup=markup)
 
 
