@@ -308,13 +308,11 @@ def spravochnik(call):
         markup.row(button1)
         markup.row(button2)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
-        bot.send_message(call.message.chat.id, text='Здесь будут рекомендации по ведению ваших проектов',
-                         parse_mode='markdown', reply_markup=markup)
     elif call.data == 'algorithm':
         markup = telebot.types.InlineKeyboardMarkup()
         button1 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='projects')
         markup.row(button1)
-        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
+        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
         bot.send_message(call.message.chat.id, text='Для начала стоит помнить, что проще всего создавать репозиторий '
                                                     'в GIT, а же потом загружать его на ПК/ВМ (см. раздел GIT). '
                                                     'Далее следует настроить файл .gitignore (раскомментировать или '
