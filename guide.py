@@ -19,9 +19,10 @@ def helper(message):
     button7 = telebot.types.InlineKeyboardButton(text='PostgreSQL', callback_data='pg')
     button8 = telebot.types.InlineKeyboardButton(text='Nginx', callback_data='nginx')
     button9 = telebot.types.InlineKeyboardButton(text='HTML', callback_data='html')
+    button10 = telebot.types.InlineKeyboardButton(text='Projects', callback_data='projects')
     markup.row(button1, button2, button3, button7)
     markup.row(button4, button5, button6, button8)
-    markup.row(button9)
+    markup.row(button9, button10)
     bot.send_message(message.chat.id,
                      text='<s>Пельменная Виктора Чипотловича</s> Справочная "<b>Буйвол+</b>". Чем вам помочь?',
                      parse_mode='HTML', reply_markup=markup)
@@ -313,7 +314,6 @@ def spravochnik(call):
         markup = telebot.types.InlineKeyboardMarkup()
         button1 = telebot.types.InlineKeyboardButton(text='Назад', callback_data='projects')
         markup.row(button1)
-        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=markup)
         bot.send_message(call.message.chat.id, text='Для начала стоит помнить, что проще всего создавать репозиторий '
                                                     'в GIT, а же потом загружать его на ПК/ВМ (см. раздел GIT). '
                                                     'Далее следует настроить файл .gitignore (раскомментировать или '
