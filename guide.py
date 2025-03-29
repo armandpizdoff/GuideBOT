@@ -30,6 +30,7 @@ def helper(message):
 
 @bot.callback_query_handler(func=lambda call: True)
 def spravochnik(call):
+    bot.answer_callback_query(call.id)
     if call.data == 'guide':
         markup = telebot.types.InlineKeyboardMarkup()
         button1 = telebot.types.InlineKeyboardButton(text='Python', callback_data='python')
@@ -107,6 +108,7 @@ def spravochnik(call):
                               '\n<b>mv * ../</b> - перемещает файлы в текущем каталоге на уровень выше. '
                               '\n<b>mv *.* ..</b> - перемещает ВСЕ ФАЙЛЫ в текущем каталоге на уровень выше '
                               '(в т.ч. и скрытые). '
+                              '\n <b>mv oldname NewName</b> - переименовать папку/файл с сохранением прав и владельца. '
                               '\n<b>cp user/file.txt /home/user/directory</b> - '
                               'скопировать файл. схема: cp + что копируем + куда скопировать. '
                               '\n<b>cp user/file.txt ./file_super</b> - . - копирует в текущую директорию. После '
